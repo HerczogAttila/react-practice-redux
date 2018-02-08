@@ -1,4 +1,3 @@
-
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const ADD = 'ADD';
@@ -32,11 +31,19 @@ export const subtract = (value) => {
   };
 };
 
-export const storeResult = (res) => {
+export const saveResult = (res) => {
   return {
     type: STORE_RESULT,
     result: res
   };
+};
+
+export const storeResult = (res) => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(saveResult(res));
+    }, 2000);
+  }
 };
 
 export const deleteResult = (id) => {
